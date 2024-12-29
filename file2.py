@@ -29,7 +29,7 @@ def getweather(event=None):
         pressure = json_data['main']['pressure'] #unit is hPa(hectopascal); 1hPa = 1 mbar
         humidity = json_data['main']['humidity']
         wind = json_data['wind']['speed']
-        #timezone of Mukerian,India is IST whise offset is GMT+5.5.  Therefore subtract 5.5 hrs,i.e, 19800 seconds because IST is ahead of GMT(Greenwich Mean Time) by 5.5 hours
+        #timezone of (Mukerian)India is IST whise offset is GMT+5.5.  Therefore subtract 5.5 hrs,i.e, 19800 seconds because IST is ahead of GMT(Greenwich Mean Time) by 5.5 hours
         sunrise = time.strftime("%I:%M", time.gmtime(json_data['sys']['sunrise'] -19800))
         sunset = time.strftime("%I:%M", time.gmtime(json_data['sys']['sunset'] -19800))
 
@@ -69,10 +69,13 @@ textField.focus()
 textField.bind('<Return>', getweather)
 
 # Labels
+# tile label
 label1 = tk.Label(canvas, font=title_font)
 label1.pack()
+#body label
 label2 = tk.Label(canvas, text="Enter your City", font=body_font)
 label2.pack()
 
 # Main loop
+#Starts the main event loop of the application.Without this, the GUI window would appear and immediately close.
 canvas.mainloop()
